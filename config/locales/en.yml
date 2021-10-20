@@ -1,3 +1,7 @@
 en:
   navbar:
     brand: Cosmetics Store
+    menus:
+      home: dashboard
+      products: products
+      orders: orders
