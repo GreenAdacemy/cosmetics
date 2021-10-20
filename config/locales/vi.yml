@@ -9,4 +9,9 @@ vi:
       signup: đăng ký
     auth:
       signin: đăng nhập
-      signup: đăng ký  
+      signup: đăng ký
+      setting: cài đặt
+      profile: hồ sơ cá nhân
+      signout: đăng xuất   
+  confirm:
+    signout: Bạn có chắc chắn muốn thoát ?

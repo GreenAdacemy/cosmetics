@@ -10,3 +10,8 @@ en:
     auth:
       signin: sign in
       signup: sign up 
+      setting: setting
+      profile: profile
+      signout: sign out
+  confirm:
+    signout: Are you sure ?   
