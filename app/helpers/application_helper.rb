@@ -19,7 +19,8 @@ module ApplicationHelper
   end
 
   def color_active_class(path)
-    is_active?(path) ? 'text-secondary' : 'text-white'
+    # is_active?(path) ? 'text-secondary' : 'text-white'
+    class_names({'text-secondary': is_active?(path), 'text-white': !is_active?(path)})
   end
 
   def is_active?(path)
