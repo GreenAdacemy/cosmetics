@@ -60,3 +60,10 @@ gem "dotenv-rails", "~> 2.7"
 gem "devise", "~> 4.8"
 
 gem "annotate", "~> 3.1"
+
+gem "hotwire-rails", "~> 0.1.3"
+gem "image_processing", "~> 1.12"
+gem "roo", "~> 2.8"
+gem "activerecord-import", "~> 1.2"
+gem "roo-xls", "~> 1.2"
+gem "active_decorator", "~> 1.4"
