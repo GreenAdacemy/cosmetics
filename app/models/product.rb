@@ -7,7 +7,7 @@
 #  name        :string
 #  price       :decimal(8, 2)
 #  quantity    :integer          default(0)
-#  status      :integer          default(0)
+#  status      :integer          default("newly")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint           not null
@@ -31,7 +31,7 @@ class Product < ApplicationRecord
     :out_of_stocks, :stop_producing, :waiting_price 
   ] 
 
-  scope :by_limit, -> (size=50) { includes(:category).limit(size)}
+  scope :by_limit, -> (size=50) { includes(:category).limit(size) }
 
   def attach_url(index = 0)
     return nil unless self.images.attached?
@@ -51,39 +51,39 @@ class Product < ApplicationRecord
     self.category.name.gsub(/\-/, ' ')
   end
 
-  def ribbon
-    return new_product if self.newly?    
-  end
+  # def ribbon
+  #   return new_product if self.newly?    
+  # end
 
-  private
-  def new_product?
-    self.created_at + 7.days <= Time.zone.now
-  end
+  # private
+  # def new_product?
+  #   self.created_at + 7.days <= Time.zone.now
+  # end
 
-  def popular
-    ribbon_tag 'popular', :left
-  end
+  # def popular
+  #   ribbon_tag 'popular', :left
+  # end
 
-  def promotion
-    ribbon_tag 'promotion'
-  end
+  # def promotion
+  #   ribbon_tag 'promotion'
+  # end
 
-  def new_product
-    ribbon_tag 'new', :left
-  end
+  # def new_product
+  #   ribbon_tag 'new', :left
+  # end
 
-  def favourites
-    ['far fa-heart', 'fas fa-cart-plus']
-  end
+  # def favourites
+  #   ['far fa-heart', 'fas fa-cart-plus']
+  # end
 
-  def ribbon_tag(name, position=:right)
-    cls = 'ribbon-left' if position == :left
-    %Q(
-      <div class="ribbon text-uppercase #{cls}">
-        <span>
-          S/p mới
-        </span>
-      </div>
-    ).html_safe
-  end
+  # def ribbon_tag(name, position=:right)
+  #   cls = 'ribbon-left' if position == :left
+  #   %Q(
+  #     <div class="ribbon text-uppercase #{cls}">
+  #       <span>
+  #         S/p mới
+  #       </span>
+  #     </div>
+  #   ).html_safe
+  # end
 end

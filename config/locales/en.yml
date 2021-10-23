@@ -15,3 +15,9 @@ en:
       signout: sign out
   confirm:
     signout: Are you sure ?   
+  orders:
+    price_contact: Contact
+  ribbon:
+    popular: popular
+    promotion: promotion
+    new: new

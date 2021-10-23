@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+class TurboController < ApplicationController
+  class Responder < ActionController::Responder
+    def to_turbo_stream
+      controller.render(options.merge(formats: :html))
+    rescue ActionView::MissingTemplate => error
+      if get?
+        raise error
+      elsif has_errors? && default_action
+        render rendering_options.merge(formats: :html, status: :unprocessable_entity)
+      else
+        redirect_to navigation_location
+      end
+    end
+  end
+  self.responder = Responder
+  respond_to :html, :turbo_stream
+end
+
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -14,11 +32,11 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '7cb579a3bde8a757759dbcdfa688012df1fb45c887c74eb318faad8891d874d0f1926d2bc70c56cc458248ab8a005dbd06750ca735048e0c5c046f2395e59197'
+  # config.secret_key = '18dfd5f1495bed6d0d9aad54e5dc1bb7a0d4a0bbb606a65df07114f778d47f26d787367f0ff97e9f59958008c6cc578cd91c31cb52d0b5cce4a9248c500549aa'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
-  # config.parent_controller = 'DeviseController'
+  config.parent_controller = 'TurboController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -126,7 +144,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '5a472856eff8f2d66318bf2a78657dd913f379aebc17cec149418ed1bd87e5eefa6daa5f5f6e6792bc385a9de14933d36f5da22be4665b9d27e5aee5ed1797af'
+  # config.pepper = '9d8679a593520d57cf90430798674e5709cb253c080dc2ffb757ea70c1c84a132f46ec262346ba387a073afc003b84fe8f180adef08539bde76fd9f0d04a6c1e'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -263,7 +281,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
