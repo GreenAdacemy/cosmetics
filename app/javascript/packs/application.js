@@ -18,3 +18,9 @@ const images = require.context("../images", true)
 import '../stylesheets/application.scss'
 
 import 'bootstrap'
+
+import lozad from "lozad"
+window.addEventListener('load', function() {
+  var observer = lozad()
+  observer.observe()
+})

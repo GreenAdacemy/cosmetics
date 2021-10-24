@@ -67,3 +67,7 @@ gem "roo", "~> 2.8"
 gem "activerecord-import", "~> 1.2"
 gem "roo-xls", "~> 1.2"
 gem "active_decorator", "~> 1.4"
+
+gem "devise-bootstrapped", "~> 0.1.1"
+
+gem "stimulus-rails", "~> 0.7.1"
