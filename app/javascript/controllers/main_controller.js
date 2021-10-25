@@ -20,9 +20,10 @@ export default class extends Controller {
   }
 
   loadDefault() {
-    console.info('Enable lazy load')
-    lozad().observe()
-    this.lozadLoaded = true
+    window.dispatchEvent(new Event('reload'))
+    // console.info('Enable lazy load')
+    // lozad().observe()
+    // this.lozadLoaded = true
   }
 
   disconnect() {

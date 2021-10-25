@@ -19,8 +19,5 @@ import '../stylesheets/application.scss'
 
 import 'bootstrap'
 
-import lozad from "lozad"
-window.addEventListener('load', function() {
-  var observer = lozad()
-  observer.observe()
-})
+import * as EventService from '../services/event_service'
+EventService.start()

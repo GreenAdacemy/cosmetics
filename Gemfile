@@ -71,3 +71,5 @@ gem "active_decorator", "~> 1.4"
 gem "devise-bootstrapped", "~> 0.1.1"
 
 gem "stimulus-rails", "~> 0.7.1"
+
+gem "pagy", "~> 5.0"
