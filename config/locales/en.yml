@@ -21,3 +21,6 @@ en:
     popular: popular
     promotion: promotion
     new: new
+  buttons:
+    login: log in
+    signup: sign up

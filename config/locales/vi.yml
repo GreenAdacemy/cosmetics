@@ -20,4 +20,10 @@ vi:
   ribbon:
     popular: thông dụng
     promotion: khuyến mãi
-    new: s/p mới    
+    new: s/p mới
+  buttons:
+    login: đăng nhập
+    signup: đăng ký
+  headers:
+    login: đăng nhập
+    signup: đăng ký
