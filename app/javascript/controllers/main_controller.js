@@ -6,12 +6,11 @@ export default class extends Controller {
   static lozadLoaded = false
 
   connect() {
-    // this.loadDefault()
   }
 
   mainTargetConnected() {
     if (!this.lozadLoaded) {
-      this.loadDefault()
+      this.loadLozad()
     }
   }
 
@@ -19,28 +18,17 @@ export default class extends Controller {
     this.lozadLoaded = false
   }
 
-  loadDefault() {
+  loadLozad() {
     window.dispatchEvent(new Event('reload'))
-    // console.info('Enable lazy load')
-    // lozad().observe()
-    // this.lozadLoaded = true
   }
 
   disconnect() {
-    console.info('disconnect')
   }
 
   reconnect() {
-    console.log('call reconnect')
-    this.loadDefault()
+    this.loadLozad()
   }
 
   initialize() {
-    console.log('init')
-    document.addEventListener('cable-ready:after-morph', this.reconnect.bind(this))    
-    // document.addEventListener(
-    //   "turbo:frame-render",
-    //   this.reconnect.bind(this)
-    // );
   }
 }
