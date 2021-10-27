@@ -3,6 +3,9 @@
     max-Height: $maxProductHeight;
     min-width: $maxProductWidth;
     max-width: $maxProductWidth;
+    &.item {
+      max-width: 100%;
+    }
     @media (max-width: 500px) {
         min-width: 100%;
         max-width: 100%;
@@ -42,3 +45,4 @@
 }
 
 @import './favourite';
+@import './product';
