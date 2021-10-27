@@ -5,7 +5,6 @@ function reLoadLozad() {
 }
 
 export function start() {
-  console.info('call Start service')
   reLoadLozad()
   window.addEventListener('reload', function () {
     reLoadLozad()

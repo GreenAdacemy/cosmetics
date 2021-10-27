@@ -8,6 +8,7 @@ import "@hotwired/turbo-rails"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import * as Routes from 'routes'
 
 Rails.start()
 Turbolinks.start()
@@ -21,3 +22,10 @@ import 'bootstrap'
 
 import * as EventService from '../services/event_service'
 EventService.start()
+
+console.log('product path')
+
+window.Routes = Routes
+console.log(Routes.root_path())
+console.log('-----------------------------------')
+// import 'hello_erb.js.erb'

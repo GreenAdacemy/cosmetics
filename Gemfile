@@ -73,3 +73,5 @@ gem "devise-bootstrapped", "~> 0.1.1"
 gem "stimulus-rails", "~> 0.7.1"
 
 gem "pagy", "~> 5.0"
+
+gem "js-routes", "~> 2.1"
