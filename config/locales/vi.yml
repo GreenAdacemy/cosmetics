@@ -27,3 +27,6 @@ vi:
   headers:
     login: đăng nhập
     signup: đăng ký
+  breadcrumb:
+    home: trang chủ
+    products: sản phẩm 

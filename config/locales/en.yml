@@ -24,3 +24,6 @@ en:
   buttons:
     login: log in
     signup: sign up
+  breadcrumb:
+    home: home
+    products: products
