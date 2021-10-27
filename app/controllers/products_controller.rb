@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    p params
     # @products = Product.by_limit(100)
     @pagy, @products = pagy Product.order(:created_at)
     respond_to do |f|
