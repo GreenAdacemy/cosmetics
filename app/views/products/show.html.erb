@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<ol class="breadcrumb text-capitalize">
-  <%= render_breadcrumbs :tag => :li, :separator => '>' %>
-</ol>
+<%= render 'shared/breadcrumb' %>
 
 <%= turbo_stream_from "products" %>
 <%= turbo_frame_tag "products" do %>

@@ -1,8 +1,12 @@
 <div class='products product item px-1'>
   <div class='product-main-inner d-flex'>
-    <div class='product-images' data-controller='splide'>
-      <%= render partial: 'products/attachment', locals: { images: item.images, target: 'splide', id: 'splide' } %>
-      <%= render partial: 'products/attachment', locals: { images: item.images, target: 'thumbnail', id: 'splide-thumbnail' } %>
+    <div class='product-images d-flex1' data-controller='gallery'>
+      <div class='gallery'>
+        <%= render partial: 'products/attachment', locals: { images: item.images, target: 'gallery', id: 'gallery' } %>
+      </div>
+      <div class='thumbnail'>
+        <%= render partial: 'products/attachment', locals: { images: item.images, target: 'thumbnail', id: 'gallery-thumbnail' } %>
+      </div>
     </div>
     <div class='product-info'>
     </div>

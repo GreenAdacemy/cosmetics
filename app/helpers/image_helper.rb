@@ -15,7 +15,7 @@ module ImageHelper
 
   def splide_lazy(image)
     %Q(
-      src=#{url_for(image)}
+      data-splide-lazy=#{url_for(image)}
     )
   end
 end
