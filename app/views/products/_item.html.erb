@@ -1,14 +1,7 @@
 <div class='products product item px-1'>
   <div class='product-main-inner d-flex'>
-    <div class='product-images d-flex1' data-controller='gallery'>
-      <div class='gallery'>
-        <%= render partial: 'products/attachment', locals: { images: item.images, target: 'gallery', id: 'gallery' } %>
-      </div>
-      <div class='thumbnail'>
-        <%= render partial: 'products/attachment', locals: { images: item.images, target: 'thumbnail', id: 'gallery-thumbnail' } %>
-      </div>
-    </div>
-    <div class='product-info'>
-    </div>
+    <%= render partial: 'products/gallery', locals: { images: item.images } %>
+    <%= render partial: 'products/info', locals: { item: item } %>
   </div>
+  <%= render partial: 'products/detail', locals: { item: item } %>
 </div>

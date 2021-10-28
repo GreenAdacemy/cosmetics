@@ -27,3 +27,10 @@ en:
   breadcrumb:
     home: home
     products: products
+  product:
+    detail:
+      description: description
+      recommended: recommended for
+      benefit: benefits
+      ingredient: ingredients
+      how_to_use: how to use
