@@ -8,6 +8,20 @@ body {
     width: 25% !important;
 }
 
+.hl-60 {
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+  line-height: 60px;
+}
+
+.hl-36 {
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+  line-height: 36px;
+}
+
 .search {
     &.rounded-start {
         border-top-right-radius: 0 !important;
