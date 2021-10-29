@@ -1,6 +1,9 @@
 module ProductsHelper
   def ribbon(product)
-    return new_product if product.newly?
+    html = ''
+    html << new_product if product.newly?
+    html << promotion if product.discount?
+    html.html_safe
   end
 
   def popular

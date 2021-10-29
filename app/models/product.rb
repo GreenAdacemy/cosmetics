@@ -27,7 +27,7 @@ class Product < ApplicationRecord
   has_many :benefits, dependent: :destroy
   has_many :product_ingredients, dependent: :destroy
   has_many :ingredients, through: :product_ingredients
-
+  has_one  :promotion, dependent: :destroy
 
   enum status: [     
     :newly, :normally, :close_date, 
@@ -56,5 +56,14 @@ class Product < ApplicationRecord
 
   def category_name
     self.category.name.gsub(/\-/, ' ')
+  end
+
+  def discount?
+    self.promotion && self.promotion.discount? && self.promotion.started? || false
+  end
+
+  def discount
+    return self.price unless self.discount?
+    self.price - (self.price*self.promotion.value)/100.0
   end
 end

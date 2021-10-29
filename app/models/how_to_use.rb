@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
-#  section    :integer          default(0)
+#  section    :integer          default("use")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint           not null
