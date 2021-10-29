@@ -19,7 +19,7 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class Promotion < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, touch: true
   enum promotion_type: [:discount, :gift, :referral_bonus, :combo_product]
   enum status: [:started, :finished, :schedule]
 end
