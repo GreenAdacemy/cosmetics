@@ -3,7 +3,7 @@
 # Table name: benefits
 #
 #  id         :bigint           not null, primary key
-#  value      :string
+#  value      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint           not null

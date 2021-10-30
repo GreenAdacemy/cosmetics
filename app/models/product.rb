@@ -24,10 +24,11 @@ class Product < ApplicationRecord
   has_many_attached :images
   belongs_to :category
   has_one :recommended, dependent: :destroy
-  has_many :benefits, dependent: :destroy
+  has_one :benefit, dependent: :destroy
   has_many :product_ingredients, dependent: :destroy
   has_many :ingredients, through: :product_ingredients
   has_one  :promotion, dependent: :destroy
+  has_many :how_to_uses, dependent: :destroy
 
   enum status: [     
     :newly, :normally, :close_date, 

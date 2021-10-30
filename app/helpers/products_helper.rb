@@ -29,12 +29,17 @@ module ProductsHelper
 
   def tab_attributes(name)
     %Q(
-      id=tab-#{name} data-bs-toggle=pill data-bs-target=detail-#{name} type=button role=tab aria-controls=pills-#{name}
+      id=tab-#{name} data-bs-toggle=pill data-bs-target=#detail-#{name} type=button role=tab aria-controls=pills-#{name}
     )
   end
 
   def detail_active(index)
     class_names({'active': index == 0})
+  end
+
+  def product_content(product, section)
+    return nil if [:ingredient, :how_to_use].include?(section) 
+    product.send(section).nil? ? nil : product.send(section).humanize
   end
 
   private
