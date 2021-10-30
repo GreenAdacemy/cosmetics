@@ -20,7 +20,16 @@ module ProductsHelper
   end
 
   def favourites
-    ['far fa-heart', 'fas fa-cart-plus']
+    [ 
+      {
+        icon: 'far fa-heart',
+        type: 'like'
+      }, 
+      {
+        icon: 'fas fa-cart-plus',
+        type: 'add2cart'
+      }
+    ]
   end
   
   def description_headers

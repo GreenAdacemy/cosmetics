@@ -7,7 +7,16 @@ export default class extends Controller {
   }
 
   viewDetail(event) {
+    event.preventDefault()
+    event.stopPropagation()
     const id = event.currentTarget.getAttribute('data-id')
     location.href = Routes.product_path(id)
+  }
+
+  action(event) {
+    event.preventDefault()
+    event.stopPropagation()
+    const target = event.currentTarget
+    console.log(target)
   }
 }

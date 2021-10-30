@@ -23,9 +23,4 @@ import 'bootstrap'
 import * as EventService from '../services/event_service'
 EventService.start()
 
-console.log('product path')
-
 window.Routes = Routes
-console.log(Routes.root_path())
-console.log('-----------------------------------')
-// import 'hello_erb.js.erb'
