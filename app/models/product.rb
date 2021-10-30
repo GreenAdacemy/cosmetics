@@ -23,7 +23,7 @@
 class Product < ApplicationRecord
   has_many_attached :images
   belongs_to :category
-  has_one :recommendeds, dependent: :destroy
+  has_one :recommended, dependent: :destroy
   has_many :benefits, dependent: :destroy
   has_many :product_ingredients, dependent: :destroy
   has_many :ingredients, through: :product_ingredients
@@ -35,6 +35,16 @@ class Product < ApplicationRecord
   ] 
 
   scope :by_limit, -> (size=50) { includes(:category).order(:created_at).limit(size) }
+  scope :by_order, -> { 
+    includes(:promotion, :recommended)
+    .left_joins(:promotion, :recommended)
+    .order(:created_at) 
+  }
+  scope :by_product, -> (id) { 
+    includes(:promotion, :recommended)
+    .left_joins(:promotion, :recommended)
+    .find_by(id: id) 
+  }
 
   after_create_commit { broadcast_prepend_to "products" }
   after_destroy_commit { broadcast_remove_to "products" }

@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     # @products = Product.by_limit(100)
-    @pagy, @products = pagy Product.order(:created_at)
+    @pagy, @products = pagy Product.by_order
     respond_to do |f|
       f.turbo_stream
       f.html
@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.by_product(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
