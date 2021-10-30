@@ -2,7 +2,7 @@ module ProductsHelper
   def ribbon(product)
     html = ''
     html << new_product if product.newly?
-    html << promotion if product.discount?
+    html << promotion(product.promotion.value) if product.discount?
     html.html_safe
   end
 
@@ -10,8 +10,9 @@ module ProductsHelper
     ribbon_tag 'popular', :left
   end
 
-  def promotion
-    ribbon_tag 'promotion'
+  def promotion(value)
+    # ribbon_tag 'promotion'
+    discount_tag("-#{value}%")
   end
 
   def new_product
@@ -42,5 +43,17 @@ module ProductsHelper
     content_tag :div, class: "ribbon text-uppercase #{cls}" do
       content_tag :span, t("ribbon.#{name}")
     end
+  end
+
+  def discount_tag(value)
+    content_tag :div, class: 'badge-container' do
+      content_tag :div, value, class: 'badge sale'
+    end
+    # content_tag :div, class: 'badge-container' do
+    #   content_tag :div, class: 'wrapper' do
+    #     concat content_tag :div, content_tag(:span, '10%-'), class: 'price'
+    #     concat content_tag :div, nil, class: 'head-price'
+    #   end
+    # end
   end
 end
