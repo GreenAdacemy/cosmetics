@@ -7,6 +7,7 @@
 #  name        :string
 #  price       :decimal(8, 2)
 #  quantity    :integer          default(0)
+#  slug        :string
 #  status      :integer          default("newly")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -15,12 +16,15 @@
 # Indexes
 #
 #  index_products_on_category_id  (category_id)
+#  index_products_on_slug         (slug) UNIQUE
 #
 # Foreign Keys
 #
 #  fk_rails_...  (category_id => categories.id)
 #
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   has_many_attached :images
   belongs_to :category
   has_one :recommended, dependent: :destroy
@@ -44,7 +48,7 @@ class Product < ApplicationRecord
   scope :by_product, -> (id) { 
     includes(:promotion, :recommended)
     .left_joins(:promotion, :recommended)
-    .find_by(id: id) 
+    .where(id: id).or(Product.where(slug: id)).first 
   }
 
   after_create_commit { broadcast_prepend_to "products" }

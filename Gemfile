@@ -77,3 +77,5 @@ gem "pagy", "~> 5.0"
 gem "js-routes", "~> 2.1"
 
 gem "breadcrumbs_on_rails", "~> 4.1"
+
+gem "friendly_id", "~> 5.4"
