@@ -4,7 +4,7 @@
 #
 #  id             :bigint           not null, primary key
 #  promotion_type :integer          default("discount")
-#  status         :integer          default(0)
+#  status         :integer          default("started")
 #  value          :integer          default(0)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
