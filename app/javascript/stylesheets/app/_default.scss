@@ -75,6 +75,10 @@ body {
   }
 }
 
+.cursor-normal {
+  cursor: default !important;
+}
+
 @import './top';
 @import './svg';
 @import './srollbar';
