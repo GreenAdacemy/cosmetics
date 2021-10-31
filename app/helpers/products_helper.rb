@@ -61,6 +61,16 @@ module ProductsHelper
       label: product.quantity > 0 ? product.quantity : nil }
   end
 
+  def data_favourite(product, favourite)
+    %Q(
+      data-action=click->product#action
+      data-type=#{favourite[:type]}
+      data-product=#{product.slug}
+      data-id=#{product.id}
+      data-current-user=#{current_user.id}
+    )
+  end
+
   private
   def badge_class(quantity)
     'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle ordered'

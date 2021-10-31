@@ -17,6 +17,22 @@ export default class extends Controller {
     event.preventDefault()
     event.stopPropagation()
     const target = event.currentTarget
+    const type = target.getAttribute('data-type')
+    switch (type) {
+      case 'add2cart':
+        this.add2cart(target)
+        break
+      case 'like':
+        this.like(target)
+        break
+    }
+  }
+
+  add2cart(target) {    
     console.log(target)
+  }
+
+  like(target) {
+    console.log('like:', target)
   }
 }
