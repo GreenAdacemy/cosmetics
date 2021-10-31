@@ -524,6 +524,16 @@ export const destroy_user_session_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[6
 
 /**
  * Generates rails route to
+ * /orders/:order_id/line_items/:id/edit(.:format)
+ * @param {any} order_id
+ * @param {any} id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const edit_order_line_item_path = __jsr.r({"order_id":{"r":true},"id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"order_id"],[2,[7,"/"],[2,[6,"line_items"],[2,[7,"/"],[2,[3,"id"],[2,[7,"/"],[2,[6,"edit"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
  * /products/:id/edit(.:format)
  * @param {any} id
  * @param {object | undefined} options
@@ -565,6 +575,15 @@ export const edit_user_password_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[6,"
  * @returns {string} route path
  */
 export const edit_user_registration_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[6,"edit"],[1,[2,[8,"."],[3,"format"]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /orders/:order_id/line_items/new(.:format)
+ * @param {any} order_id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const new_order_line_item_path = __jsr.r({"order_id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"order_id"],[2,[7,"/"],[2,[6,"line_items"],[2,[7,"/"],[2,[6,"new"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]);
 
 /**
  * Generates rails route to
@@ -622,6 +641,25 @@ export const new_user_registration_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[
  * @returns {string} route path
  */
 export const new_user_session_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[6,"sign_in"],[1,[2,[8,"."],[3,"format"]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /orders/:order_id/line_items/:id(.:format)
+ * @param {any} order_id
+ * @param {any} id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const order_line_item_path = __jsr.r({"order_id":{"r":true},"id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"order_id"],[2,[7,"/"],[2,[6,"line_items"],[2,[7,"/"],[2,[3,"id"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /orders/:order_id/line_items(.:format)
+ * @param {any} order_id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const order_line_items_path = __jsr.r({"order_id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"order_id"],[2,[7,"/"],[2,[6,"line_items"],[1,[2,[8,"."],[3,"format"]]]]]]]]]);
 
 /**
  * Generates rails route to

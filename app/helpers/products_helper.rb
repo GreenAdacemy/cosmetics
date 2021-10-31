@@ -55,10 +55,10 @@ module ProductsHelper
     product.send(section).nil? ? nil : product.send(section).humanize
   end
 
-  def badge(product, favourite)
-    return unless favourite[:badge] && product.quantity > 0
-    content_tag :span, nil, class: badge_class(product.quantity), data: { 
-      label: product.quantity }
+  def badge(quantity, favourite, ordered = true)
+    return unless favourite && favourite[:badge] && quantity > 0
+    content_tag :span, nil, class: badge_class(quantity, ordered), data: { 
+      label: quantity > 9 ? '9+' : quantity }
   end
 
   def data_favourite(product, favourite)
@@ -67,13 +67,12 @@ module ProductsHelper
       data-type=#{favourite[:type]}
       data-product=#{product.slug}
       data-id=#{product.id}
-      data-current-user=#{current_user.id}
+      data-order=#{@cart.id}
     )
   end
 
   private
-  def badge_class(quantity)
-    'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle ordered'
+  def badge_class(quantity, ordered)
     class_names({
       'position-absolute': true,
       'top-0': true,
@@ -84,7 +83,8 @@ module ProductsHelper
       border: true,
       'border-light': true,
       'rounded-circle': true,
-      ordered: true,
+      ordered: ordered,
+      cart: !ordered,
       'one-unit': quantity < 10 
     })
   end

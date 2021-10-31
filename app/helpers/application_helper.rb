@@ -1,6 +1,6 @@
 module ApplicationHelper
   def authencation_menu
-   [:home, :products, :orders]
+   [:home, :products, :orders, :cart]
   end
 
   def guest_menu
@@ -14,7 +14,8 @@ module ApplicationHelper
       products: products_path, 
       orders: orders_path, 
       signup: new_user_registration_path, 
-      signin: new_user_session_path
+      signin: new_user_session_path,
+      cart: cart_path
     } [path.to_sym]
   end
 

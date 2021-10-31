@@ -5,7 +5,7 @@
         <% if favourite[:will_show] %>
           <div class='action mx-1'>
             <i class="<%= favourite[:icon] %> position-relative" <%= data_favourite(product, favourite) %> >
-              <%= badge(product, favourite) %>
+              <%= badge(product.quantity, favourite) %>
             </i>
           </div>
         <% end %>

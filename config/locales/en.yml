@@ -7,6 +7,7 @@ en:
       orders: orders
       signin: sign in
       signup: sign up
+      cart: my cart
     auth:
       signin: sign in
       signup: sign up 

@@ -30,28 +30,28 @@ export default class extends Controller {
 
   add2cart(target) {
     const self = this
-    const href = Routes.user_orders_path(target.getAttribute('data-current-user'))
-    console.info(this.initFormData(target))
-    Rails.ajax({
-      type: 'POST',
-      url: href,
-      data: this.initFormData(target),
-      dataType: 'json'
-    })
-    // fetch(
-    //   href, {
-    //     method: 'POST',
-    //     "Content-Type": "application/json",
-    //     credentials: 'same-origin',
-    //     headers: {
-    //       "X-CSRF-Token": self.csrfToken(),
-    //       Accept: "text/vnd.turbo-stream.html",
-    //     },
-    //     data: this.initFormData(target)
-    //   }
-    // )
-    //   .then(r => r.text())
-    //   .then(html => console.log(html))
+    const href = Routes.order_line_items_path(target.getAttribute('data-order'))
+    // console.info(this.initFormData(target))
+    // Rails.ajax({
+    //   type: 'POST',
+    //   url: href,
+    //   data: this.initFormData(target),
+    //   dataType: 'json'
+    // })
+    fetch(
+      href, {
+        method: 'POST',
+        "Content-Type": "application/json",
+        credentials: 'same-origin',
+        headers: {
+          "X-CSRF-Token": self.csrfToken(),
+          Accept: "text/vnd.turbo-stream.html",
+        },
+        data: this.initFormData(target)
+      }
+    )
+      .then(r => r.text())
+      .then(html => console.log(html))
   }
 
   like(target) {
@@ -63,12 +63,12 @@ export default class extends Controller {
   }
 
   initFormData(target) {
-    const order_params = {
+    const line_item_params = {
       id: target.getAttribute('data-id'),
       slug: target.getAttribute('data-product')
     }
     let data = new FormData()
-    data.append('order', JSON.stringify(order_params))
+    data.append('product', JSON.stringify(line_item_params))
     return data
     // return order_params
   }

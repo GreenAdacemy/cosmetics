@@ -1,8 +1,15 @@
 <li>
-  <%= link_to map_path(title), class: "nav-link #{color_active_class(title)} text-capitalize" do %>
-    <svg class="bi d-block mx-auto mb-1" width="24" height="24">
-      <use xlink:href="#<%= svg_id(title) %>"/>
-    </svg>
-    <%= t("navbar.menus.#{title}") %>
+  <%= link_to map_path(title), class: "position-relative nav-link #{color_active_class(title)} text-capitalize" do %>
+    <% if title.to_sym == :cart %>
+      <svg class="bi d-block mx-auto mb-1 " width="40" height="40">
+        <use xlink:href="#<%= svg_id(title) %>"/>
+      </svg>
+      <%= badge(@cart.counter, {badge: true}, false) %>
+    <% else %>
+      <svg class="bi d-block mx-auto mb-1 " width="24" height="24">
+        <use xlink:href="#<%= svg_id(title) %>"/>
+      </svg>
+      <%= t("navbar.menus.#{title}") %>
+    <% end %>
   <% end %>
 </li>
