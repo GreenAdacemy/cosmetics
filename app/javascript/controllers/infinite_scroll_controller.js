@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-// import lozad from "lozad"
 
 export default class extends Controller {
   static targets = ["scrollArea", "pagination"]
@@ -20,7 +19,6 @@ export default class extends Controller {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         this.loadMore()
-        // lozad().observe()
         window.dispatchEvent(new Event('reload'))
       }
     })

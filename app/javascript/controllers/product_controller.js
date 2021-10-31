@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { product_path } from '../routes';
+import Rails from "@rails/ujs"
 
 // Connects to data-controller="product"
 export default class extends Controller {
@@ -28,11 +28,48 @@ export default class extends Controller {
     }
   }
 
-  add2cart(target) {    
-    console.log(target)
+  add2cart(target) {
+    const self = this
+    const href = Routes.user_orders_path(target.getAttribute('data-current-user'))
+    console.info(this.initFormData(target))
+    Rails.ajax({
+      type: 'POST',
+      url: href,
+      data: this.initFormData(target),
+      dataType: 'json'
+    })
+    // fetch(
+    //   href, {
+    //     method: 'POST',
+    //     "Content-Type": "application/json",
+    //     credentials: 'same-origin',
+    //     headers: {
+    //       "X-CSRF-Token": self.csrfToken(),
+    //       Accept: "text/vnd.turbo-stream.html",
+    //     },
+    //     data: this.initFormData(target)
+    //   }
+    // )
+    //   .then(r => r.text())
+    //   .then(html => console.log(html))
   }
 
   like(target) {
     console.log('like:', target)
+  }
+
+  csrfToken() {
+    return document.querySelector("[name='csrf-token']").content
+  }
+
+  initFormData(target) {
+    const order_params = {
+      id: target.getAttribute('data-id'),
+      slug: target.getAttribute('data-product')
+    }
+    let data = new FormData()
+    data.append('order', JSON.stringify(order_params))
+    return data
+    // return order_params
   }
 }

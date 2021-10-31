@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  counter    :integer          default(0)
-#  status     :integer          default(0)
+#  status     :integer          default("in_cart")
 #  subtotal   :decimal(8, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -20,5 +20,10 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
+  has_many :line_items, dependent: :destroy
   enum status: [:in_cart, :to_confirm, :confirmed, :to_ship, :shipping, :shipped, :completed, :cancel, :refunded]
+
+  def in_cart?(product)
+    line_items.include?(product)
+  end
 end

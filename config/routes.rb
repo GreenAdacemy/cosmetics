@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  resources :users, only: [] do
+    resources :orders
+  end
   root 'home#index'
 end

@@ -542,6 +542,16 @@ export const edit_rails_conductor_inbound_email_path = __jsr.r({"id":{"r":true},
 
 /**
  * Generates rails route to
+ * /users/:user_id/orders/:id/edit(.:format)
+ * @param {any} user_id
+ * @param {any} id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const edit_user_order_path = __jsr.r({"user_id":{"r":true},"id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[3,"user_id"],[2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"id"],[2,[7,"/"],[2,[6,"edit"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
  * /users/password/edit(.:format)
  * @param {object | undefined} options
  * @returns {string} route path
@@ -579,6 +589,15 @@ export const new_rails_conductor_inbound_email_path = __jsr.r({"format":{}}, [2,
  * @returns {string} route path
  */
 export const new_rails_conductor_inbound_email_source_path = __jsr.r({"format":{}}, [2,[7,"/"],[2,[6,"rails"],[2,[7,"/"],[2,[6,"conductor"],[2,[7,"/"],[2,[6,"action_mailbox"],[2,[7,"/"],[2,[6,"inbound_emails"],[2,[7,"/"],[2,[6,"sources"],[2,[7,"/"],[2,[6,"new"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /users/:user_id/orders/new(.:format)
+ * @param {any} user_id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const new_user_order_path = __jsr.r({"user_id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[3,"user_id"],[2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[6,"new"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]);
 
 /**
  * Generates rails route to
@@ -843,6 +862,25 @@ export const turbo_resume_historical_location_path = __jsr.r({"format":{}}, [2,[
  * @returns {string} route path
  */
 export const update_rails_disk_service_path = __jsr.r({"encoded_token":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"rails"],[2,[7,"/"],[2,[6,"active_storage"],[2,[7,"/"],[2,[6,"disk"],[2,[7,"/"],[2,[3,"encoded_token"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /users/:user_id/orders/:id(.:format)
+ * @param {any} user_id
+ * @param {any} id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const user_order_path = __jsr.r({"user_id":{"r":true},"id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[3,"user_id"],[2,[7,"/"],[2,[6,"orders"],[2,[7,"/"],[2,[3,"id"],[1,[2,[8,"."],[3,"format"]]]]]]]]]]]);
+
+/**
+ * Generates rails route to
+ * /users/:user_id/orders(.:format)
+ * @param {any} user_id
+ * @param {object | undefined} options
+ * @returns {string} route path
+ */
+export const user_orders_path = __jsr.r({"user_id":{"r":true},"format":{}}, [2,[7,"/"],[2,[6,"users"],[2,[7,"/"],[2,[3,"user_id"],[2,[7,"/"],[2,[6,"orders"],[1,[2,[8,"."],[3,"format"]]]]]]]]]);
 
 /**
  * Generates rails route to

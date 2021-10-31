@@ -56,9 +56,9 @@ module ProductsHelper
   end
 
   def badge(product, favourite)
-    return unless favourite[:badge]
+    return unless favourite[:badge] && product.quantity > 0
     content_tag :span, nil, class: badge_class(product.quantity), data: { 
-      label: product.quantity > 0 ? product.quantity : nil }
+      label: product.quantity }
   end
 
   def data_favourite(product, favourite)

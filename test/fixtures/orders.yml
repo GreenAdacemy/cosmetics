@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  counter    :integer          default(0)
-#  status     :integer          default(0)
+#  status     :integer          default("in_cart")
 #  subtotal   :decimal(8, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -22,4 +22,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
+  has_one_attached :avatar
+  
+  def cart
+    self.orders.in_cart.first
+  end
 end
