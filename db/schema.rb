@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_171334) do
+ActiveRecord::Schema.define(version: 2021_10_31_030034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,27 @@ ActiveRecord::Schema.define(version: 2021_10_30_171334) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.decimal "price", precision: 8, scale: 2
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "counter", default: 0
+    t.integer "status", default: 0
+    t.decimal "subtotal", precision: 8, scale: 2
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "product_ingredients", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "ingredient_id", null: false
@@ -131,6 +152,9 @@ ActiveRecord::Schema.define(version: 2021_10_30_171334) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "benefits", "products"
   add_foreign_key "how_to_uses", "products"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_ingredients", "ingredients"
   add_foreign_key "product_ingredients", "products"
   add_foreign_key "products", "categories"
