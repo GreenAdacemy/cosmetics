@@ -2,13 +2,28 @@
     &.user-navbar {
         margin-top: 8px;
         .dropdown-toggle {
-            img {
-                width: 40px;
-                height: 40px;
+          img {
+              width: 40px;
+              height: 40px;
+          }
+          &:after {
+              color: #fff;
+          }
+          &.user-no-avatar {
+            .rounded-circle {
+              width: 40px;
+              height: 40px;
+              color: white;
+              line-height: 34px;
+              border: 1px solid white;
+              text-align: center;
+              font-size: 25px;              
             }
             &:after {
-                color: #fff;
+              color: #fff;
+              margin-top: 18px;
             }
+          }
         }
         ul {
             margin-top: 21px !important;

@@ -1,6 +1,14 @@
 <div class="flex-shrink-0 dropdown user-navbar">
-  <%= link_to 'javascript:void(0)', class: 'd-block link-dark text-decoration-none dropdown-toggle', id: 'dropdownUser2', data: { 'bs-toggle': 'dropdown' }, aria: { expanded: 'false' } do %>
-    <%= image_tag 'https://github.com/mdo.png', class: 'rounded-circle', width: 32, height: 32, alt: 'user' %>
+  <% if missing_avatar? %>
+    <%= link_to 'javascript:void(0)', class: 'user-no-avatar d-block link-dark text-decoration-none dropdown-toggle d-flex', id: 'dropdownUser2', data: { 'bs-toggle': 'dropdown' }, aria: { expanded: 'false' } do %>
+      <div class='rounded-circle'>
+        <i class="fas fa-user-alt"></i>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to 'javascript:void(0)', class: 'd-block link-dark text-decoration-none dropdown-toggle', id: 'dropdownUser2', data: { 'bs-toggle': 'dropdown' }, aria: { expanded: 'false' } do %>
+      <%= image_tag 'https://github.com/mdo.png', class: 'rounded-circle', width: 32, height: 32, alt: 'user' %>
+    <% end %>
   <% end %>
   <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
     <li>
