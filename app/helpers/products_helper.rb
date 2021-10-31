@@ -24,12 +24,14 @@ module ProductsHelper
       {
         icon: 'far fa-heart',
         type: 'like',
-        will_show: is_user?
+        will_show: is_user?,
+        badge: false
       }, 
       {
         icon: 'fas fa-cart-plus',
         type: 'add2cart',
-        will_show: is_user?
+        will_show: is_user?,
+        badge: true
       }
     ]
   end
@@ -53,7 +55,30 @@ module ProductsHelper
     product.send(section).nil? ? nil : product.send(section).humanize
   end
 
+  def badge(product, favourite)
+    return unless favourite[:badge]
+    content_tag :span, nil, class: badge_class(product.quantity), data: { 
+      label: product.quantity > 0 ? product.quantity : nil }
+  end
+
   private
+  def badge_class(quantity)
+    'position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle ordered'
+    class_names({
+      'position-absolute': true,
+      'top-0': true,
+      'start-100': true,
+      'translate-middle': true,
+      'p-2': true,
+      'bg-danger': true,
+      border: true,
+      'border-light': true,
+      'rounded-circle': true,
+      ordered: true,
+      'one-unit': quantity < 10 
+    })
+  end
+
   def ribbon_tag(name, position=:right)
     cls = 'ribbon-left' if position == :left
     content_tag :div, class: "ribbon text-uppercase #{cls}" do

@@ -4,7 +4,9 @@
       <% favourites.each do |favourite|%>
         <% if favourite[:will_show] %>
           <div class='action mx-1'>
-            <i class="<%= favourite[:icon] %>" data-action="click->product#action" data-type=<%= favourite[:type] %>></i>
+            <i class="<%= favourite[:icon] %> position-relative" data-action="click->product#action" data-type=<%= favourite[:type] %>>
+              <%= badge(product, favourite) %>
+            </i>
           </div>
         <% end %>
       <% end %>
