@@ -23,11 +23,13 @@ module ProductsHelper
     [ 
       {
         icon: 'far fa-heart',
-        type: 'like'
+        type: 'like',
+        will_show: is_user?
       }, 
       {
         icon: 'fas fa-cart-plus',
-        type: 'add2cart'
+        type: 'add2cart',
+        will_show: is_user?
       }
     ]
   end
