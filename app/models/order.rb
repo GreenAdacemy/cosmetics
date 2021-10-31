@@ -20,4 +20,5 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
+  enum status: [:in_cart, :to_confirm, :confirmed, :to_ship, :shipping, :shipped, :completed, :cancel, :refunded]
 end
