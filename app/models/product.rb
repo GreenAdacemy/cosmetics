@@ -53,23 +53,7 @@ class Product < ApplicationRecord
 
   after_create_commit { broadcast_prepend_to "products" }
   after_destroy_commit { broadcast_remove_to "products" }
-  after_update_commit do
-    broadcast_replace_to :show, 
-      partial: 'products/item',
-      locals: { item: self, user: User.current },
-      target: "show-product-#{id}"
-
-    broadcast_replace_to 'user-cart',
-      partial: 'shared/cart',
-      locals: { id: "cart-#{User.current.cart.id}", quantity: User.current.cart.counter, badge: {badge: true}, ordered: false },
-      target: "cart-#{User.current.cart.id}"
-
-    quantity = User.current.cart.line_item(id)&.quantity
-    broadcast_replace_to 'user-add2cart',
-      partial: 'shared/cart',
-      locals: { id: "user-add2cart-#{id}", quantity: quantity, badge: {badge: true}, ordered: true },
-      target: "user-add2cart-#{id}"
-  end
+  after_update_commit :update_info
 
   def attach_url(index = 0)
     return nil unless self.images.attached?
@@ -96,5 +80,29 @@ class Product < ApplicationRecord
   def discount
     return self.price unless self.discount?
     self.price - (self.price*self.promotion.value)/100.0
+  end
+
+  private
+  def update_info
+    broadcast_replace_to :show, 
+      partial: 'products/item',
+      locals: { item: self, user: User.current },
+      target: "show-product-#{id}"
+
+    broadcast_replace_to :products, 
+      partial: 'products/product',
+      locals: { item: self, user: User.current },
+      target: "product_#{id}"
+
+    broadcast_replace_to 'user-cart',
+      partial: 'shared/cart',
+      locals: { id: "cart-#{User.current.cart.id}", quantity: User.current.cart.counter, badge: {badge: true}, ordered: false },
+      target: "cart-#{User.current.cart.id}"
+
+    quantity = User.current.cart.line_item(id)&.quantity
+    broadcast_replace_to 'user-add2cart',
+      partial: 'shared/cart',
+      locals: { id: "user-add2cart-#{id}", quantity: quantity, badge: {badge: true}, ordered: true },
+      target: "user-add2cart-#{id}"
   end
 end
