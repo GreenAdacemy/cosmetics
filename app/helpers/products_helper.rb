@@ -61,13 +61,13 @@ module ProductsHelper
       label: quantity > 9 ? '9+' : quantity }
   end
 
-  def data_favourite(product, favourite)
+  def data_favourite(product, favourite, user)
     %Q(
       data-action=click->product#action
       data-type=#{favourite[:type]}
       data-product=#{product.slug}
       data-id=#{product.id}
-      data-order=#{@cart.id}
+      data-order=#{user.cart.id}
     )
   end
 

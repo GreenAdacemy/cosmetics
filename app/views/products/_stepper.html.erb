@@ -1,9 +1,9 @@
 <div class="input-group product-main__stepper me-2">
-  <span class="input-group-text cursor-pointer">
-    <i class="fas fa-minus"></i>
+  <span class="input-group-text cursor-pointer border-end-0">
+    <i class="fas fa-minus" <%= data_favourite(product, {type: 'reduceItem'}, user) %>></i>
   </span>
-  <input type="text" class="form-control shadow-none text-center" aria-label="Amount" disabled value=<%= quantity %>>
-  <span class="input-group-text cursor-pointer">
-    <i class="fas fa-plus"></i>
+      <input type="text" class="form-control shadow-none text-center" aria-label="Amount" disabled value=<%= quantity %>>
+  <span class="input-group-text cursor-pointer border-start-0">
+    <i class="fas fa-plus" <%= data_favourite(product, {type: 'add2cart'}, user) %>></i>
   </span>
 </div>

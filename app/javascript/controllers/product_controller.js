@@ -20,7 +20,10 @@ export default class extends Controller {
     const type = target.getAttribute('data-type')
     switch (type) {
       case 'add2cart':
-        this.add2cart(target)
+        this.add2cart(target, this.initFormData('add'))
+        break
+      case 'reduceItem':
+        this.add2cart(target, this.initFormData('reduce'))
         break
       case 'like':
         this.like(target)
@@ -28,7 +31,7 @@ export default class extends Controller {
     }
   }
 
-  add2cart(target) {
+  add2cart(target, data) {
     const self = this
     const href = Routes.order_line_item_path(
       target.getAttribute('data-order'),
@@ -43,7 +46,7 @@ export default class extends Controller {
           "X-CSRF-Token": self.csrfToken(),
           Accept: "text/vnd.turbo-stream.html",
         },
-        body: this.initFormData('add')
+        body: data
       }
     )
   }
@@ -56,10 +59,10 @@ export default class extends Controller {
     return document.querySelector("[name='csrf-token']").content
   }
 
-  initFormData(addMore) {
+  initFormData(type) {
     let data = new FormData()
     data.append('order', JSON.stringify({
-      type: addMore
+      type: type
     }))
     return data
   }

@@ -4,7 +4,7 @@
       <% favourites(user).each do |favourite|%>
         <% if favourite[:will_show] %>
           <div class='action mx-1'>
-            <i class="<%= favourite[:icon] %> position-relative" <%= data_favourite(product, favourite) %> >
+            <i class="<%= favourite[:icon] %> position-relative" <%= data_favourite(product, favourite, user) %> >
               <%= turbo_stream_from "user-#{favourite[:type]}" %>
               <%= turbo_frame_tag "user-#{favourite[:type]}" do %>
                 <% render partial: 'shared/cart', locals: {id: "user-#{favourite[:type]}-#{product.id}", quantity: quantity(user.cart, product.id), badge: favourite, ordered: true } %>

@@ -2,18 +2,12 @@ class LineItemsController < ApplicationController
   def update
     product = Product.by_product(params[:id])
     @cart.in_cart?(product.id) ? increment_quantity(product, quantity) : new_line(product)
-    # render json: {
-    #   badge: User.current.cart.counter
-    # }
-    respond_to do |f|
-      f.turbo_stream
-    end        
   end
 
   private
   def quantity
     order = JSON.parse(params[:order], symbolize_names: true)
-    order[:type].downcase.to_sym == :minus ? -1 : 1
+    order[:type].downcase.to_sym == :reduce ? -1 : 1
   end
 
   def increment_quantity(product, n)

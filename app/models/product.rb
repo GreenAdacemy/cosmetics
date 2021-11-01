@@ -64,9 +64,10 @@ class Product < ApplicationRecord
       locals: { id: "cart-#{User.current.cart.id}", quantity: User.current.cart.counter, badge: {badge: true}, ordered: false },
       target: "cart-#{User.current.cart.id}"
 
+    quantity = User.current.cart.line_item(id)&.quantity
     broadcast_replace_to 'user-add2cart',
       partial: 'shared/cart',
-      locals: { id: "user-add2cart-#{id}", quantity: User.current.cart.line_item(id)&.quantity, badge: {badge: true}, ordered: true },
+      locals: { id: "user-add2cart-#{id}", quantity: quantity, badge: {badge: true}, ordered: true },
       target: "user-add2cart-#{id}"
   end
 
