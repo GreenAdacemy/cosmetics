@@ -1,4 +1,4 @@
-.ordered, .cart {
+.cart {
   &.one-unit {
     &:after {
       content: attr(data-label);
@@ -20,6 +20,32 @@
     line-height: 0;
     text-align: center;
     left: 2px;
+    font-size: 9px;
+  }
+}
+
+.ordered {
+  &.one-unit {
+    &:after {
+      content: attr(data-label);
+      color: white;
+      position: absolute;
+      top: 8px;
+      line-height: 0;
+      text-align: center;
+      left: 5px;
+      font-size: 11px;    
+    }                    
+  }
+
+  &:after {
+    content: attr(data-label);
+    color: white;
+    position: absolute;
+    top: 8px;
+    line-height: 0;
+    text-align: center;
+    left: 4px;
     font-size: 9px;
   }
 }

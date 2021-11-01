@@ -27,6 +27,10 @@ class LineItem < ApplicationRecord
 
   after_commit :update_order
 
+  def self.by_product(id)
+    find_by(product_id: id)
+  end
+
   private
   def update_order
     self.order.update_order

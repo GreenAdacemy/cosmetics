@@ -6,7 +6,7 @@
       </svg>
       <%= turbo_stream_from "user-cart" %>
       <%= turbo_frame_tag "user-cart" do %>
-        <% render partial: 'layouts/partials/navbar/cart', locals: {cart: cart, badge: {badge: true}, ordered: false } %>
+        <% render partial: 'shared/cart', locals: {id: "cart-#{cart.id}", quantity: cart.counter, badge: {badge: true}, ordered: false } %>
       <% end %>
     <% else %>
       <svg class="bi d-block mx-auto mb-1 " width="24" height="24">

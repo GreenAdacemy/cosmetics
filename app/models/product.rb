@@ -60,9 +60,14 @@ class Product < ApplicationRecord
       target: "show-product-#{id}"
 
     broadcast_replace_to 'user-cart',
-      partial: 'layouts/partials/navbar/cart',
-      locals: { cart: User.current.cart, badge: {badge: true}, ordered: false },
+      partial: 'shared/cart',
+      locals: { id: "cart-#{User.current.cart.id}", quantity: User.current.cart.counter, badge: {badge: true}, ordered: false },
       target: "cart-#{User.current.cart.id}"
+
+    broadcast_replace_to 'user-add2cart',
+      partial: 'shared/cart',
+      locals: { id: "user-add2cart-#{id}", quantity: User.current.cart.line_item(id)&.quantity, badge: {badge: true}, ordered: true },
+      target: "user-add2cart-#{id}"
   end
 
   def attach_url(index = 0)

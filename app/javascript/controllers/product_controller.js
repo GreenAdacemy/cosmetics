@@ -46,18 +46,6 @@ export default class extends Controller {
         body: this.initFormData('add')
       }
     )
-      .then(r => r.text())
-      .then(data => {
-        console.log(data)
-        // data = JSON.parse(data)
-        // const cart = document.querySelector('.cart')
-        // cart.setAttribute('data-label', data.badge)
-        // if (data.badge > 9) {
-        //   cart.classList.remove('one-unit')
-        // } else {
-        //   cart.classList.add('one-unit')
-        // }
-      })
   }
 
   like(target) {
