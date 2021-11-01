@@ -23,5 +23,12 @@
 #
 class LineItem < ApplicationRecord
   belongs_to :order
-  belongs_to :product
+  belongs_to :product, touch: true
+
+  after_commit :update_order
+
+  private
+  def update_order
+    self.order.update_order
+  end
 end

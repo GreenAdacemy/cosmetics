@@ -2,8 +2,8 @@
   <div class='products product item px-1 cursor-normal'>
     <div class='product-main-inner d-flex'>
       <%= render partial: 'products/gallery', locals: { product: item } %>
-      <%= render partial: 'products/info', locals: { item: item } %>
+      <%= render partial: 'products/info', locals: { item: item, user: user } %>
     </div>
-    <%= render partial: 'products/detail', locals: { item: item } %>
+    <%= render partial: 'products/detail', locals: { item: item, user: user } %>
   </div>
 <% end %>  

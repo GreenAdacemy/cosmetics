@@ -19,18 +19,18 @@ module ProductsHelper
     ribbon_tag 'new', :left
   end
 
-  def favourites
+  def favourites(user)
     [ 
       {
         icon: 'far fa-heart',
         type: 'like',
-        will_show: is_user?,
+        will_show: is_user?(user),
         badge: false
       }, 
       {
         icon: 'fas fa-cart-plus',
         type: 'add2cart',
-        will_show: is_user?,
+        will_show: is_user?(user),
         badge: true
       }
     ]

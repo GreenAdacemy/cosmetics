@@ -56,8 +56,13 @@ class Product < ApplicationRecord
   after_update_commit do
     broadcast_replace_to :show, 
       partial: 'products/item',
-      locals: { item: self },
+      locals: { item: self, user: User.current },
       target: "show-product-#{id}"
+
+    broadcast_replace_to 'user-cart',
+      partial: 'layouts/partials/navbar/cart',
+      locals: { cart: User.current.cart, badge: {badge: true}, ordered: false },
+      target: "cart-#{User.current.cart.id}"
   end
 
   def attach_url(index = 0)

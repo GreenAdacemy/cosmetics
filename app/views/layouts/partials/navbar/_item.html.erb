@@ -4,7 +4,10 @@
       <svg class="bi d-block mx-auto mb-1 " width="40" height="40">
         <use xlink:href="#<%= svg_id(title) %>"/>
       </svg>
-      <%= badge(@cart.counter, {badge: true}, false) %>
+      <%= turbo_stream_from "user-cart" %>
+      <%= turbo_frame_tag "user-cart" do %>
+        <% render partial: 'layouts/partials/navbar/cart', locals: {cart: cart, badge: {badge: true}, ordered: false } %>
+      <% end %>
     <% else %>
       <svg class="bi d-block mx-auto mb-1 " width="24" height="24">
         <use xlink:href="#<%= svg_id(title) %>"/>

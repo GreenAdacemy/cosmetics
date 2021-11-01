@@ -30,28 +30,34 @@ export default class extends Controller {
 
   add2cart(target) {
     const self = this
-    const href = Routes.order_line_items_path(target.getAttribute('data-order'))
-    // console.info(this.initFormData(target))
-    // Rails.ajax({
-    //   type: 'POST',
-    //   url: href,
-    //   data: this.initFormData(target),
-    //   dataType: 'json'
-    // })
+    const href = Routes.order_line_item_path(
+      target.getAttribute('data-order'),
+      target.getAttribute('data-product'),
+    )
     fetch(
       href, {
-        method: 'POST',
+        method: 'PUT',
         "Content-Type": "application/json",
         credentials: 'same-origin',
         headers: {
           "X-CSRF-Token": self.csrfToken(),
           Accept: "text/vnd.turbo-stream.html",
         },
-        data: this.initFormData(target)
+        body: this.initFormData('add')
       }
     )
       .then(r => r.text())
-      .then(html => console.log(html))
+      .then(data => {
+        console.log(data)
+        // data = JSON.parse(data)
+        // const cart = document.querySelector('.cart')
+        // cart.setAttribute('data-label', data.badge)
+        // if (data.badge > 9) {
+        //   cart.classList.remove('one-unit')
+        // } else {
+        //   cart.classList.add('one-unit')
+        // }
+      })
   }
 
   like(target) {
@@ -62,14 +68,11 @@ export default class extends Controller {
     return document.querySelector("[name='csrf-token']").content
   }
 
-  initFormData(target) {
-    const line_item_params = {
-      id: target.getAttribute('data-id'),
-      slug: target.getAttribute('data-product')
-    }
+  initFormData(addMore) {
     let data = new FormData()
-    data.append('product', JSON.stringify(line_item_params))
+    data.append('order', JSON.stringify({
+      type: addMore
+    }))
     return data
-    // return order_params
   }
 }

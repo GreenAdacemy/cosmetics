@@ -21,15 +21,25 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :line_items, dependent: :destroy
+
   enum status: [:in_cart, :to_confirm, :confirmed, :to_ship, :shipping, :shipped, :completed, :cancel, :refunded]
 
   scope :by_order, -> (order) {
     includes(:line_items).joins(:line_items).where(id: order).first
   }
+  
   def in_cart?(product)
-    line_items.find_by(id: product)
+    line_items.find_by(product_id: product).present?
   end
 
-  def new(product)
+  def line_item(product)
+    line_items.find_by(product_id: product)
+  end
+
+  def update_order
+    update(
+      counter: self.line_items.count, 
+      subtotal: self.line_items.sum('(price - (price*discount)/100.0) * quantity')
+    )
   end
 end

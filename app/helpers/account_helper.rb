@@ -1,10 +1,10 @@
 module AccountHelper
-  def is_guest?
-    !user_signed_in?
+  def is_guest?(user)
+    user.nil?
   end
 
-  def is_user?
-    user_signed_in?
+  def is_user?(user)
+    user.present?
   end
 
   def missing_avatar?

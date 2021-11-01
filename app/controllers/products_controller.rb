@@ -1,18 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[ show edit update destroy ]
   include Pagy::Backend
   helper Pagy::Frontend
+
+  before_action :set_product, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   add_breadcrumb I18n.t('breadcrumb.home'), :root_path
   add_breadcrumb I18n.t('breadcrumb.products'), :products_path
 
   # GET /products or /products.json
   def index
-    # @products = Product.by_limit(100)
     @pagy, @products = pagy Product.by_order
     respond_to do |f|
-      f.turbo_stream
       f.html
+      f.turbo_stream
     end    
   end
 

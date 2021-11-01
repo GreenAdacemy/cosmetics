@@ -2,5 +2,5 @@
 
 <%= turbo_stream_from "show" %>
 <%= turbo_frame_tag "show" do %>
-  <%= render partial: 'products/item', locals: {item: @product} %>
+  <%= render partial: 'products/item', locals: { item: @product, user: current_user } %>
 <% end %>
