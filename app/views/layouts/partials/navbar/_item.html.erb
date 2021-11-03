@@ -1,7 +1,7 @@
 <li>
   <%= link_to map_path(title), class: "position-relative nav-link #{color_active_class(title)} text-capitalize" do %>
     <% if title.to_sym == :cart %>
-      <svg class="bi d-block mx-auto mb-1 " width="40" height="40">
+      <svg class="bi d-block mx-auto mb-1 " width="60" height="40">
         <use xlink:href="#<%= svg_id(title) %>"/>
       </svg>
       <%= turbo_stream_from "user-cart" %>

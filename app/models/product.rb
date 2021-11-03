@@ -89,10 +89,10 @@ class Product < ApplicationRecord
       locals: { item: self, user: User.current },
       target: "show-product-#{id}"
 
-    broadcast_replace_to :products, 
-      partial: 'products/product',
-      locals: { item: self, user: User.current },
-      target: "product_#{id}"
+    # broadcast_replace_to :products, 
+    #   partial: 'products/product',
+    #   locals: { item: self, user: User.current },
+    #   target: "product_#{id}"
 
     broadcast_replace_to 'user-cart',
       partial: 'shared/cart',

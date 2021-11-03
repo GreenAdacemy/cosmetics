@@ -22,7 +22,7 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :line_items, dependent: :destroy
 
-  enum status: [:in_cart, :to_confirm, :confirmed, :to_ship, :shipping, :shipped, :completed, :cancel, :refunded]
+  enum status: [:in_cart, :checkout, :confirmed, :to_ship, :shipping, :shipped, :completed, :cancel, :refunded, :closed]
 
   scope :by_order, -> (order) {
     includes(:line_items).joins(:line_items).where(id: order).first

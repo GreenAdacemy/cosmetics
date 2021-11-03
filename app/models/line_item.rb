@@ -31,6 +31,10 @@ class LineItem < ApplicationRecord
     find_by(product_id: id)
   end
 
+  def total
+    (price - price*discount/100.0)*quantity
+  end
+
   private
   def update_order
     self.order.update_order

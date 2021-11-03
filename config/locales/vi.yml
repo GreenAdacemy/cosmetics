@@ -18,6 +18,20 @@ vi:
     signout: Bạn có chắc chắn muốn thoát ?
   orders:
     price_contact: liên hệ
+    in_cart: giỏ hàng
+    checkout: thanh toán
+    confirm: xác nhận
+    delivering: đang giao hàng
+    completed: hoàn thành
+    order:
+      total: tổng cộng
+      title:
+        name: tên sản phẩm
+        quantity: số lượng
+        price: giá tiền
+        delivery: giao tới
+        subtotal: tạm tính
+        promotion: khuyến mãi
   ribbon:
     popular: thông dụng
     promotion: khuyến mãi
@@ -31,6 +45,8 @@ vi:
   breadcrumb:
     home: trang chủ
     products: sản phẩm 
+    orders: danh sách đơn hàng
+    cart: giỏ hàng của tôi
   product:
     detail:
       description: mô tả 
@@ -40,3 +56,5 @@ vi:
       how_to_use: hướng dẫn
   cart:
     add_to_cart: thêm vào giỏ hàng
+  actions:
+    change: thay đổi

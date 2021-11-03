@@ -1,19 +1,15 @@
 class OrdersController < ApplicationController
+  add_breadcrumb I18n.t('breadcrumb.home'), :root_path
+  add_breadcrumb I18n.t('breadcrumb.orders'), :orders_path
+
   def index
   end
 
   def create
-    order_params = JSON.parse(params[:order])
-    product = Product.by_product(order_params[:id])
-    if @cart.in_cart?(product.id)
-    else
-    end
-    p product
-    p product.name
-    p current_user
-    p @cart
   end
 
-  def cart    
+  def cart
+    add_breadcrumb I18n.t('breadcrumb.cart')
+    @items = @cart.line_items
   end
 end

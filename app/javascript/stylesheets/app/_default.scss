@@ -2,6 +2,9 @@ body {
     overflow-x: hidden;
     background-color: var(--bs-body-bg);
     padding-top: 80px;
+    &.orders {
+      background-color: #efefef;
+    }
 }
 
 .w-25 {

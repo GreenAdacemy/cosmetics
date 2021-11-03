@@ -1,0 +1,54 @@
+<div class='order-info w-40 bg-transparent'>
+  <div class='bg-white mb-3 px-3'>
+    <div class='order-delivery'>
+      <div class='d-flex'>
+        <div class='w-50 text-capitalize fs-5 '><%= t('orders.order.title.delivery') %></div>
+        <div class='w-50 text-capitalize text-end fs-5'><%= t('actions.change') %></div>
+      </div>
+      <div class='d-flex py-3'>
+        <div class='w-50 text-capitalize border-end'>
+          <%= current_user.profile.name %>
+        </div>
+        <div class='w-50 text-capitalize ps-2'>
+          <%= current_user.profile.phone %>
+        </div>
+      </div>
+      <div class='w-100 text-capitalize text-muted fs-0-8'>
+        <%= current_user.address %>
+      </div>
+    </div>
+  </div>
+  <div class='bg-white mb-3 px-3 lh-2'>
+    <div class='order-receipt'>
+      <div class='d-flex'>
+        <div class='w-25 text-capitalize fs-6'>
+          <%= t('orders.order.title.subtotal') %>
+        </div>
+        <div class='w-75 fs-6 text-end'>
+          <%= currency(cart.subtotal) %>
+        </div>
+      </div>
+      <div class='d-flex'>
+        <div class='w-25 text-capitalize fs-6'>
+          <%= t('orders.order.title.promotion') %>
+        </div>
+        <div class='w-75 fs-6 text-end'>
+          <div>0<sup>đ</sup></div>
+        </div>
+      </div>
+      <div class='border-top d-flex'>
+        <div class='w-25 text-capitalize fs-6'>
+          <%= t('orders.order.total') %>
+        </div>
+        <div class='w-75 fs-6 text-end text-danger'>
+          <%= currency(cart.subtotal) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='bg-white mb-3 w-100'>
+    <button type="button" class="btn btn-danger text-capitalize w-100">
+      <%= t('orders.checkout') %>
+    </button>
+  </div>
+</div>

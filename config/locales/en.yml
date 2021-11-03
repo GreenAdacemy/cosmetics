@@ -18,6 +18,20 @@ en:
     signout: Are you sure ?   
   orders:
     price_contact: Contact
+    in_cart: cart
+    checkout: checkout
+    confirm: confirm
+    delivering: delivering
+    completed: completed
+    order:
+      total: total
+      title:
+        name: product name
+        quantity: quantity
+        price: price
+        delivery: delivery to
+        subtotal: tạm tính
+        promotion: promotion
   ribbon:
     popular: popular
     promotion: promotion
@@ -28,6 +42,8 @@ en:
   breadcrumb:
     home: home
     products: products
+    orders: orders
+    cart: my cart
   product:
     detail:
       description: description
@@ -37,3 +53,5 @@ en:
       how_to_use: how to use
   cart:
     add_to_cart: add to cart      
+  actions:
+    change: change    

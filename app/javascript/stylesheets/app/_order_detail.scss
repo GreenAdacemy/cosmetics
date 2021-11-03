@@ -1,0 +1,64 @@
+header {
+  padding: 0;
+  .active {
+    &.circle-check {
+      &:after {
+        color: #008000;
+        border: 1px solid #008000;
+      }
+    }
+  }
+  .circle-check {
+    font-weight: 700;
+    position: relative;
+    &:after {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid #e9ecef;
+      position: absolute;
+      top: 50%;
+      margin-top: 17px;
+      left: 50%;
+      margin-left: -12px;
+      content: "\f00c";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      text-align: center;
+      color: #e9ecef;
+      font-size: 0.7rem;
+      line-height: 24px;
+      background-color: #fff;
+    }
+  }
+  .progress {
+    height: 2px;
+    background-color: #ccc;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .progress-bar {
+      &.in-cart {
+        width: 20%;
+      }
+      &.checkout {
+        width: 33%;
+      }
+      &.confirm {
+        width: 48%;
+      }
+      &.delivering {
+        width: 63%;
+      }
+      &.completed {
+        width: 80%;
+      }
+      &.closed {
+        width: 100%;
+      }
+    }
+  }
+}
+

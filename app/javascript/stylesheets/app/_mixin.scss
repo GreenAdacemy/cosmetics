@@ -1,0 +1,9 @@
+@mixin timeline() {
+  @for $i from 1 through 100 {
+    .progress-bar {
+      &[aria-valuenow='#{$i}'] {
+        width: calc($i*1%);
+      }
+    }
+  }
+}

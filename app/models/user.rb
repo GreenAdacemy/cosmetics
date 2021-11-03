@@ -22,6 +22,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+
   has_one_attached :avatar
   
   def cart
@@ -34,5 +37,9 @@ class User < ApplicationRecord
 
   def self.current=(user)
     Thread.current[:user] = user
-  end  
+  end 
+
+  def address
+    addresses.find_by(primary: true).address
+  end
 end

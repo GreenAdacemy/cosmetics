@@ -1,0 +1,41 @@
+<div class='order-detail w-60 bg-white me-2'>
+  <div class='title d-flex p-1 border-bottom text-center fw-bold text-capitalize'>
+    <%['name', 'quantity', 'price'].each do |title| %>
+      <div class="<%= title %>">
+        <%= t("orders.order.title.#{title}") %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <% items.each do |item| %>
+      <div class='order-item d-flex border-bottom p-1'>
+        <div class='order-item--thumbnail me-2'>
+          <div class='thumbnail lozad' <%=lozad_class(item.product.thumbnail)%>></div>
+        </div>
+        <div class='order-product--name text-capitalize me-2 text-wrap'>
+          <%= link_to product_path(item.product), class: 'text-decoration-none text-black bg-transparent', target: '_top' do %>
+            <strong><%= item.product.name %></strong>
+          <% end %>
+        </div>
+        <div class='order-product--stepper me-3'>
+          <%= render partial: 'products/stepper', locals: { quantity: quantity(@cart, item.product.id), product: item.product, user: current_user }%>
+        </div>
+        <div class="<%= in_cart(item.product) %>">
+          <%= render partial: 'products/price', locals: {product: item.product, for_order: true } %>
+        </div>
+        <div class='order-product--total fs-4 text-end'>
+          <%= currency(item.total) %>
+        </div>
+        <div class='order-product--actions text-center'>
+          <i class="fas fa-trash-alt"></i>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class='row'>
+    <div class='w-100 justify-content-end text-danger fs-3 px-2-5 py-2 d-flex'>
+      <span class='me-2 text-capitalize'><%= t('orders.order.total') %>: </span>
+      <%= currency(cart.subtotal) %>
+    </div>
+  </div>
+</div>
