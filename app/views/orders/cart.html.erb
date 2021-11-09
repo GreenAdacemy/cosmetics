@@ -1,16 +1,5 @@
-<div id='menu-cart'>
-  <%= render 'shared/breadcrumb' %>
-  <%= turbo_stream_from "cart-detail" %>
-  <%= turbo_frame_tag "cart-detail" do %>
-    <%= render partial: 'orders/step_line', locals: {cart: @cart} %>
-  <% end %>
-
-  <div class="wrapper" data-main-target='main'>
-    <div class='container-fluid'>
-      <div class='position-relative d-flex w-100'>
-        <%= render partial: 'orders/cart_detail', locals: { items: @items, cart: @cart }%>
-        <%= render partial: 'orders/cart_summary', locals: { items: @items, cart: @cart }%>
-      </div>
-    </div>
-  </div>
-</div>
+<% if @items.empty? %>
+  <%= render 'orders/show_empty' %>
+<% else %>
+  <%= render partial: 'orders/show_cart', locals: {items: @items, cart: @cart} %>
+<% end %>

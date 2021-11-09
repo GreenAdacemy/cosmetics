@@ -1,0 +1,6 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-capitalize"><%= t('cart.empty.display') %></h1>
+  <p class="lead first-letter-uppercase"><%= t('cart.empty.message') %></p>
+  <hr class="my-4">
+  <p class='first-letter-uppercase'><%= t('cart.empty.description', order: orders_path, class: 'text-decoration-none bg-transparent', product: products_path).html_safe %></p>
+</div>

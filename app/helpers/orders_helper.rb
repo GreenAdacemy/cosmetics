@@ -34,7 +34,7 @@ module OrdersHelper
     html = ''
     start = 0
     ['in_cart', 'checkout', 'confirm', 'delivering', 'completed'].each do |status|
-      html << button_tag(status, cart.status == status, start)
+      html << button_tag(status, active_list(cart.status), start)
       start = start + 20
     end
     html.html_safe
@@ -52,8 +52,8 @@ module OrdersHelper
       'translate-middle': true,
       btn: true,
       'btn-sm': true,
-      'btn-success': active,
-      'btn-secondary': !active,
+      'btn-success': active.include?(status),
+      'btn-secondary': !active.include?(status),
       'rounded-pill': true,
       'button-progress-check': true
     }), type: 'button' do
@@ -65,9 +65,42 @@ module OrdersHelper
   def progress_tag(cart)
     content_tag(
       :div, nil, class: progress_class(cart), 
-      role: 'progressbar', 'aria-valuenow': '0', 'aria-valuemin': '0', 
+      role: 'progressbar', 'aria-valuenow': value_now(cart.status), 'aria-valuemin': '0', 
       'aria-valuemax': '100'
     )
+  end
+
+  def value_now(status)
+    statuses[status.to_sym][:position]
+  end
+
+  def active_list(status)
+    statuses[status.to_sym][:active]
+  end
+  
+  def statuses
+    {
+      in_cart: {
+        position: 0,
+        active: ['in_cart']
+      }, 
+      checkout: {
+        position: 20,
+        active: ['in_cart', 'checkout']
+      },
+      confirm: {
+        position: 40,
+        active: ['in_cart', 'checkout', 'confirm']
+      },
+      delivering: {
+        position: 60,
+        active: ['in_cart', 'checkout', 'confirm', 'delivering']
+      },
+      completed: {
+        position: 80,
+        active: ['in_cart', 'checkout', 'confirm', 'delivering', 'completed']
+      }
+    }
   end
 
   def progress_class(cart)

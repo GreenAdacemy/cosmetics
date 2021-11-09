@@ -21,6 +21,7 @@ vi:
     in_cart: giỏ hàng
     checkout: thanh toán
     confirm: xác nhận
+    waiting_confirm: "* Đơn hàng chờ xác nhận từ shop"
     delivering: đang giao hàng
     completed: hoàn thành
     order:
@@ -56,5 +57,9 @@ vi:
       how_to_use: hướng dẫn
   cart:
     add_to_cart: thêm vào giỏ hàng
+    empty:
+      display: shop chào bạn
+      message: hiện tại bạn chưa có đơn hàng nào chờ thanh toán.
+      description: bạn có thể kiểm tra các <a href=%{order} class="%{class}">đơn hàng</a> hoặc bắt đầu <a href=%{product} class="%{class}"> mua sản phẩm </a>
   actions:
     change: thay đổi

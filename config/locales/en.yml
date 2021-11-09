@@ -21,6 +21,7 @@ en:
     in_cart: cart
     checkout: checkout
     confirm: confirm
+    waiting_confirm: "* The order waiting confirm from shop"
     delivering: delivering
     completed: completed
     order:
@@ -53,5 +54,9 @@ en:
       how_to_use: how to use
   cart:
     add_to_cart: add to cart      
+    empty:
+      display: hi !!
+      message: currently you doen't any order wait checkout.
+      description: you can check <a href=%{order} class=%{class}>the orders</a> or <a href=%{product} class=%{class}> start buying product </a>
   actions:
     change: change    

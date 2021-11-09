@@ -12,4 +12,14 @@ class OrdersController < ApplicationController
     add_breadcrumb I18n.t('breadcrumb.cart')
     @items = @cart.line_items
   end
+
+  def show
+    @order = current_user.orders.find_by(id: params[:id])
+    @items = @order.line_items
+  end
+
+  def checkout
+    @cart.checkout!
+    redirect_to cart_path
+  end
 end
