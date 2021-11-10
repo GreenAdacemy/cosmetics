@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   add_breadcrumb I18n.t('breadcrumb.orders'), :orders_path
 
   def index
+    @order = current_user.orders
   end
 
   def create
