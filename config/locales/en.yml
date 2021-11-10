@@ -22,6 +22,8 @@ en:
     checkout: checkout
     confirm: confirm
     waiting_confirm: "* The order waiting confirm from shop"
+    waiting_delivery: "* The order waiting partner to transport"
+    to_ship: "* The order is transporting"
     delivering: delivering
     completed: completed
     order:

@@ -33,14 +33,20 @@ module OrdersHelper
   def buttons_tag(cart)
     html = ''
     start = 0
-    ['in_cart', 'checkout', 'confirm', 'delivering', 'completed'].each do |status|
-      html << button_tag(status, active_list(cart.status), start)
+    ['in_cart', 'checkout', 'confirmed', 'delivering', 'completed'].each do |status|
+      html << button_tag(status, active_list(cart.status), start, cart)
       start = start + 20
     end
     html.html_safe
   end
 
-  def button_tag(status, active, start)
+  def status_name(status, cart)
+    return 'confirm' if [:confirmed].include?(status.to_sym)
+    return cart.status if status == 'completed' && [:cancel, :refunded, :pending].include?(cart.status.to_sym)
+    status
+  end
+
+  def button_tag(status, active, start, cart)
     content_tag :button, class: class_names({
       'position-absolute': true,
       'top-0': true,
@@ -57,7 +63,7 @@ module OrdersHelper
       'rounded-pill': true,
       'button-progress-check': true
     }), type: 'button' do
-      concat content_tag(:p, t("orders.#{status}"), class: 'progress-title text-capitalize')
+      concat content_tag(:p, t("orders.#{status_name(status, cart)}"), class: 'progress-title text-capitalize')
       concat content_tag(:i, nil, class: 'fas fa-check')
     end
   end
@@ -71,11 +77,17 @@ module OrdersHelper
   end
 
   def value_now(status)
-    statuses[status.to_sym][:position]
+    key = status.to_sym
+    key = :delivering if [:to_ship, :shipping, :shipped].include?(status.to_sym)
+    key = :completed if [:cancel, :refunded, :pending].include?(status.to_sym)
+    statuses[key][:position]
   end
 
   def active_list(status)
-    statuses[status.to_sym][:active]
+    key = status.to_sym
+    key = :delivering if [:to_ship, :shipping, :shipped].include?(status.to_sym)
+    key = :completed if [:cancel, :refunded, :pending].include?(status.to_sym)
+    statuses[key][:active]
   end
   
   def statuses
@@ -88,17 +100,17 @@ module OrdersHelper
         position: 20,
         active: ['in_cart', 'checkout']
       },
-      confirm: {
+      confirmed: {
         position: 40,
-        active: ['in_cart', 'checkout', 'confirm']
+        active: ['in_cart', 'checkout', 'confirmed']
       },
       delivering: {
         position: 60,
-        active: ['in_cart', 'checkout', 'confirm', 'delivering']
+        active: ['in_cart', 'checkout', 'confirmed', 'delivering']
       },
       completed: {
         position: 80,
-        active: ['in_cart', 'checkout', 'confirm', 'delivering', 'completed']
+        active: ['in_cart', 'checkout', 'confirmed', 'delivering', 'completed']
       }
     }
   end

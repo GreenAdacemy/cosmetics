@@ -20,10 +20,22 @@ vi:
     price_contact: liên hệ
     in_cart: giỏ hàng
     checkout: thanh toán
-    confirm: xác nhận
-    waiting_confirm: "* Đơn hàng chờ xác nhận từ shop"
+    confirm: chờ xác nhận
+    actions:
+      to_ship: "* Đơn hàng đã được chuyển giao cho đối tác vận chuyển"
+      shipping: "* Đơn hàng đang được đối tác vận chuyển"
+      shipped: "* Đơn hàng đã được giao cho khách hàng"
+      confirm: "* Đơn hàng chờ xác nhận từ shop"
+      delivery: "* Đơn hàng chờ đối tác nhận để vận chuyển"
+      completed: "* Khách hàng đã nhận đơn hàng"
+      cancel: "* Khách hàng đã huỷ đơn hàng"
+      refunded: "* Đã hoàn tiền cho khách hàng"
+      pending: "* Đơn hàng đã tạm ngưng"
     delivering: đang giao hàng
     completed: hoàn thành
+    cancel: đơn hàng đã huỷ
+    refunded: đã hoàn tiền
+    pending: đang tạm ngưng
     order:
       total: tổng cộng
       title:
