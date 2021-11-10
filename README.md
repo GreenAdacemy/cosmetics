@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requirements
 
-Things you may want to cover:
+* Ruby 3.0.0
 
-* Ruby version
+* Rails 6.1.4.1
 
 * System dependencies
 
-* Configuration
+  * Redis Server
 
-* Database creation
+  * PostgreSQL
 
-* Database initialization
+* Initialization
+  ## Setup
+    * Clone file env.sample to .env.developement
+    * Clone file env.sample to .env.test
+    * Replace <username>, <password>, <db name> with your information from 2 file .env.developement, .env.test
+  ## Create models
+    * Run rails db:create
+    * run rails db:migrate
+    * run rails db:seed
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
+* Start server
+  * Run rails s
+  
 * Deployment instructions
 
 * ...

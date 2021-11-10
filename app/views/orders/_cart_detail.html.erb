@@ -18,7 +18,7 @@
           <% end %>
         </div>
         <div class='order-product--stepper me-3'>
-          <%= render partial: 'products/stepper', locals: { quantity: quantity(@cart, item.product.id), product: item.product, user: current_user }%>
+          <%= render partial: 'products/stepper', locals: { quantity: quantity(cart, item.product.id), product: item.product, user: current_user }%>
         </div>
         <div class="<%= in_cart(item.product) %>">
           <%= render partial: 'products/price', locals: {product: item.product, for_order: true } %>
