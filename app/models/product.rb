@@ -24,6 +24,7 @@
 #
 class Product < ApplicationRecord
   extend FriendlyId
+  include Pagy::Backend
   friendly_id :name, use: :slugged
   has_many_attached :images
   belongs_to :category
@@ -51,9 +52,15 @@ class Product < ApplicationRecord
     .where(id: id).or(Product.where(slug: id)).first 
   }
 
-  after_create_commit { broadcast_prepend_to "products" }
-  after_destroy_commit { broadcast_remove_to "products" }
-  after_update_commit :update_info
+  after_create_commit :insert_item
+  after_destroy_commit :remove_item
+  # after_destroy_commit { 
+  #   broadcast_remove_to "products" ,
+  #     partial: 'products/items',
+  #     locals: { products: Product.by_order, user: User.current },
+  #     target: 'items'
+  # }
+  after_update_commit :update_item
 
   def attach_url(index = 0)
     return nil unless self.images.attached?
@@ -83,7 +90,31 @@ class Product < ApplicationRecord
   end
 
   private
-  def update_info
+  def insert_item
+    if Product.count == 1
+      broadcast_replace_to 'products' ,
+        partial: 'products/show_items',
+        locals: { products: [], user: User.current, pagy: nil, clear_screen: true },
+        target: 'items'
+    end
+    broadcast_prepend_to 'products' ,
+      partial: 'products/product',
+      locals: { products: [self], user: User.current },
+      target: 'items'
+  end
+
+  def remove_item
+    broadcast_remove_to "products"
+    if Product.count == 0
+      broadcast_replace_to 'products' ,
+        partial: 'products/show_items',
+        locals: { products: [], user: User.current, pagy: nil },
+        target: 'items'
+    end
+  end
+
+  def update_item
+    return if User.current.nil?
     broadcast_replace_to :show, 
       partial: 'products/item',
       locals: { item: self, user: User.current },

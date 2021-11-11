@@ -21,6 +21,8 @@ Requirements
     * Run rails db:create
     * run rails db:migrate
     * run rails db:seed
+  ## Create User
+    * Run rails project:sample
 
 * Start server
   * Run rails s

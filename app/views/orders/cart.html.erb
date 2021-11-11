@@ -1,5 +1,5 @@
 <% if @items.empty? %>
-  <%= render 'orders/show_empty' %>
+  <%= render 'shared/show_empty' %>
 <% else %>
   <%= render partial: 'orders/show_cart', locals: {items: @items, cart: @cart} %>
 <% end %>
