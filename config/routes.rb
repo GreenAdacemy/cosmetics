@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
-  # resources :users, only: [] do
-    resources :orders
-  # end
+
+  resources :users, only: [] do
+    resource :setting
+  end
+  resources :orders
 
   resources :orders, only: [] do
     resources :line_items

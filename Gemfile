@@ -81,3 +81,7 @@ gem "breadcrumbs_on_rails", "~> 4.1"
 gem "friendly_id", "~> 5.4"
 
 gem "config", "~> 3.1"
+
+gem "trestle", "~> 0.9.5"
+
+gem "trestle-auth", "~> 0.4.3"
