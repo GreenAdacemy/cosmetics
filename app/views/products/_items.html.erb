@@ -4,8 +4,12 @@
   <% end %>
 <% else %>
   <div class='products px-1' id='items'>
-    <% products.each do |product| %>
-      <%= render partial: 'products/product', locals: { product: product, user: user } %>
+    <% if products.any? || clear_screen %>
+      <% products.each do |product| %>
+        <%= render partial: 'products/product', locals: { product: product, user: user } %>
+      <% end %>
+    <% else %>
+      <%= render 'shared/show_empty' %>
     <% end %>
   </div>
 <% end %>

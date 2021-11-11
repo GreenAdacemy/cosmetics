@@ -1,13 +1,2 @@
 <%= render 'shared/breadcrumb' %>
-
-<div  data-controller='infinite-scroll product'>
-  <%= turbo_stream_from "products" %>
-  <%= turbo_frame_tag "products" do %>    
-    <%= render partial: 'products/items', locals: { products: @products, user: current_user } %>
-  <% end %>
-  <div data-infinite-scroll-target='scrollArea'>
-  </div>
-  <div id='pagination' data-infinite-scroll-target="pagination" class='invisible' >
-    <%== pagy_bootstrap_nav(@pagy) %>
-  </div>
-</div>
+<%= render partial: 'products/show_items', locals:{ products: @products, user: current_user, pagy: @pagy }%>
