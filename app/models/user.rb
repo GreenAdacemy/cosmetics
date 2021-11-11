@@ -27,6 +27,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  accepts_nested_attributes_for :profile, allow_destroy: true
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+  
   def cart
     self.orders.in_cart.first
   end
