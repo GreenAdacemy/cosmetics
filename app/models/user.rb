@@ -23,13 +23,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
   has_one :profile, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  has_many :addresses, inverse_of: :user, dependent: :destroy
 
   has_one_attached :avatar
 
   accepts_nested_attributes_for :profile, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
-  
+
   def cart
     self.orders.in_cart.first
   end
@@ -43,6 +43,6 @@ class User < ApplicationRecord
   end 
 
   def address
-    addresses.find_by(primary: true).address
+    addresses.find_by(primary: true)&.address
   end
 end

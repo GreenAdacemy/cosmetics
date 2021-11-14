@@ -24,3 +24,6 @@ import * as EventService from '../services/event_service'
 EventService.start()
 
 window.Routes = Routes
+
+require("./nested-forms/addFields")
+require("./nested-forms/removeFields")

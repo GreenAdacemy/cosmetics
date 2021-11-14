@@ -247,4 +247,8 @@ Trestle.configure do |config|
   # config.auth.remember.cookie = ->(user) {
   #   { value: user.remember_token, expires: user.remember_token_expires_at }
   # }
+  config.helper :all
+  config.hook(:javascripts) do
+    javascript_pack_tag 'admin'
+  end
 end
