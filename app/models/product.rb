@@ -54,12 +54,6 @@ class Product < ApplicationRecord
 
   after_create_commit :insert_item
   after_destroy_commit :remove_item
-  # after_destroy_commit { 
-  #   broadcast_remove_to "products" ,
-  #     partial: 'products/items',
-  #     locals: { products: Product.by_order, user: User.current },
-  #     target: 'items'
-  # }
   after_update_commit :update_item
 
   def attach_url(index = 0)

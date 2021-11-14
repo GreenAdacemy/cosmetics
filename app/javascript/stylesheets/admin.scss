@@ -1,0 +1,32 @@
+.nested-fields {
+  border-left: 10px solid #dbdbdb;
+  margin-bottom: 10px;
+  padding-right: 35px;
+
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.remove_fields {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+}
+
+.admin-image {
+  .thumbnail {
+    --thumbnail: 100px;
+    max-width: var(--thumbnail);
+    min-height: var(--thumbnail);
+    width: var(--thumbnail);
+    height: var(--thumbnail);
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

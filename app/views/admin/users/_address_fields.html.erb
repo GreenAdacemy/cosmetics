@@ -1,0 +1,15 @@
+<div class='nested-fields panel panel-default'>
+  <div class='panel-body'>
+    <div class='row'>
+      <div class='col-xs-8 col-sm-10'>
+        <%= f.text_field :address, label: false, placeholder: "Address" %>
+      </div>
+      <div class='col-xs-4 col-sm-2'>
+        <%= f.check_box :primary %>
+      </div>
+      <div>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -34,7 +34,7 @@ module OrdersHelper
     html = ''
     start = 0
     ['in_cart', 'checkout', 'confirmed', 'delivering', 'completed'].each do |status|
-      html << button_tag(status, active_list(cart.status), start, cart)
+      html << button_html_tag(status, active_list(cart.status), start, cart)
       start = start + 20
     end
     html.html_safe
@@ -46,7 +46,7 @@ module OrdersHelper
     status
   end
 
-  def button_tag(status, active, start, cart)
+  def button_html_tag(status, active, start, cart)
     content_tag :button, class: class_names({
       'position-absolute': true,
       'top-0': true,
