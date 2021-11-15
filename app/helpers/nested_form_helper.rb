@@ -32,6 +32,6 @@ module NestedFormHelper
     # The `fields:` are rendered from the `fields` blocks.
         # We use `gsub("\n", "")` to remove anywhite space from the rendered partial.
     # The `id:` value needs to match the value used in `child_index: id`.
-    link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, 'javascript:void(0)', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 end

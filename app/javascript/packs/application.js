@@ -16,7 +16,9 @@ ActiveStorage.start()
 
 import "controllers"
 const images = require.context("../images", true)
+
 import '../stylesheets/application.scss'
+import '../stylesheets/admin.scss'
 
 import 'bootstrap'
 
@@ -27,3 +29,4 @@ window.Routes = Routes
 
 require("./nested-forms/addFields")
 require("./nested-forms/removeFields")
+require("./nested-forms/primary")

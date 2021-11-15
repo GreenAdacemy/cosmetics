@@ -1,5 +1,4 @@
 .nested-fields {
-  border-left: 10px solid #dbdbdb;
   margin-bottom: 10px;
   padding-right: 35px;
 
@@ -24,6 +23,8 @@
     min-height: var(--thumbnail);
     width: var(--thumbnail);
     height: var(--thumbnail);
+    background-repeat: no-repeat;
+    background-size: contain;
     img {
       width: 100%;
       height: 100%;
