@@ -33,6 +33,13 @@ Trestle.resource(:users) do
         col(xs: 6, sm: 6) { text_field :phone }
       end
     end
+    # fields_for :addresses do |address_form|
+      # render 'address_fields', f: address_form
+      # row do
+      #   col(xs: 6, sm: 6) { text_field :address }
+      #   col(xs: 6, sm: 6) { check_box :primary }
+      # end
+    # end
     render "addresses"
   end
 
@@ -47,9 +54,6 @@ Trestle.resource(:users) do
   #   params.require(:user).permit(:name, ...)
   # end
   controller do
-    def index
-      @test='hello world'
-    end
     def import
       # @import = ImportManagement.new()
     end
@@ -69,4 +73,12 @@ Trestle.resource(:users) do
     get :import, on: :collection
     post :import_file, on: :collection
   end
+
+  update_instance do |instance, attrs|
+    if attrs[:password].blank?
+      attrs.delete(:password)
+      attrs.delete(:password_confirmation) if attrs[:password_confirmation].blank?
+    end
+    instance.assign_attributes(attrs)
+  end  
 end

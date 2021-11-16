@@ -4,11 +4,13 @@
       <div class='col-xs-8 col-sm-10'>
         <%= f.text_field :address, label: false, placeholder: "Address" %>
       </div>
-      <div class='col-xs-4 col-sm-2'>
+      <div class='col-xs-4 col-sm-2 pt-2 only-primary'>
         <%= f.check_box :primary %>
       </div>
       <div>
-        <%= link_to "Remove", '#', class: "remove_fields" %>
+        <%= link_to 'javascript:void(0)', class: "remove_fields" do %>
+          <i class='fa fa-times'></i>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <div  class='nested-fields-container'>
   <legend>Addresses:</legend>
 
-  <% form.fields_for :addresses do |addresses_form| %>
-    <%= render 'address_fields', f: addresses_form %>
+  <%= form.fields_for :addresses do |address_form| %>
+    <%= render 'address_fields', f: address_form %>
   <% end %>
   
   <div class='nested-field-links'>
-    <%= link_to_add_fields "Add Addresses", form, :addresses %>
+    <%= link_to_add_fields "Add Address", form, :addresses %>
   </div>
 </div>

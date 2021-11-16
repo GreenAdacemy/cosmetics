@@ -56,7 +56,7 @@ module ProductsHelper
   end
 
   def badge(quantity, favourite, ordered = true)
-    return unless favourite && favourite[:badge] && quantity > 0
+    return unless favourite && favourite[:badge] && quantity.to_i > 0
     content_tag :span, nil, class: badge_class(quantity, ordered), data: { 
       label: quantity > 9 ? '9+' : quantity }
   end

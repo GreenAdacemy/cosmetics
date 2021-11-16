@@ -1,5 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
+  include Rails.application.routes.url_helpers
+  default_url_options[:host] = 'localhost:3003'
   
   def is_storage_from_disk?
     ActiveStorage::Blob.service.class.name.include?('Disk')

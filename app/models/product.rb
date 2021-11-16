@@ -64,6 +64,12 @@ class Product < ApplicationRecord
     is_storage_from_disk? ? storage_local_path(image.key) : storage_public_path(image.key)
   end
 
+  def thumbnail_url
+    if self.images.attached?
+      return url_for(self.thumbnail)
+    end
+  end
+
   def thumbnail
     return nil unless self.images.attached?
     image = self.images.first
@@ -113,11 +119,6 @@ class Product < ApplicationRecord
       partial: 'products/item',
       locals: { item: self, user: User.current },
       target: "show-product-#{id}"
-
-    # broadcast_replace_to :products, 
-    #   partial: 'products/product',
-    #   locals: { item: self, user: User.current },
-    #   target: "product_#{id}"
 
     broadcast_replace_to 'user-cart',
       partial: 'shared/cart',

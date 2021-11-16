@@ -5,15 +5,17 @@ class removeFields {
   }
 
   iterateLinks() {
+    const class_name = 'remove_fields'
     // Use event delegation to ensure any fields added after the page loads are captured.
     document.addEventListener("click", (e) => {
-      if (e.target && e.target.className == "remove_fields") {
+      if (e.target && (e.target.className == class_name || e.target.parentElement.className == class_name)) {
         this.handleClick(e.target, e);
       }
     });
   }
 
   handleClick(link, e) {
+    console.info(link, e)
     // Stop the function from executing if a link or event were not passed into the function.
     if (!link || !e) return;
     // Prevent the browser from following the URL.
